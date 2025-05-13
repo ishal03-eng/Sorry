@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For My Star 💖</title>
+  <link rel="icon" href="https://emoji.gg/assets/emoji/8329_heart.png" type="image/png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* 🌌 Base Layout & Responsive Text */
+    body {
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 40px 15px;
+      color: #f8e1f4;
+      overflow-x: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #ff9ce3;
+    }
+
+    p {
+      font-size: 1.05rem;
+    }
+
+    /* 🌙 Moon Adjustments for Small Screens */
+    .moon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 70px;
+      height: 70px;
+      background: radial-gradient(circle at 30% 30%, #fdfde3, #c4c4c4);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 255, 200, 0.4),
+                  0 0 40px rgba(255, 255, 200, 0.2);
+      z-index: 1;
+      animation: moonGlow 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes moonGlow {
+      0% { box-shadow: 0 0 20px rgba(255, 255, 200, 0.3); }
+      100% { box-shadow: 0 0 40px rgba(255, 255, 200, 0.6); }
+    }
+
+    /* 💖 Heart Animation */
+    .heart {
+      font-size: 2.5rem;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    #surprise {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #fdb3ff;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 📱 Button Styling */
+    .btn, .btn-lg {
+        border-radius: 50px;
+        padding: 10px 22px;
+        font-size: 1rem;
+        background-color: #ff69b4;
+        border: none;
+        color: white;
+        position: relative;
+        z-index: 10; /* Ensure the button is on top */
+    }
+    
+    .btn:hover {
+        background-color: #ff85c1;
+    }
+  
+
+    /* 💌 Message Box */
+    .message-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 25px 20px;
+      margin-top: 25px;
+      max-width: 100%;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.2);
+      color: #ffdff5;
+    }
+
+    .message-box h3 {
+      font-size: 1.5rem;
+    }
+
+    .message-box p {
+      font-size: 1rem;
+    }
+
+    /* 💫 Floating Hearts */
+    .floating-heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: floatUp 4s ease-in forwards;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-150px); opacity: 0; }
+    }
+
+    /* 💌 Tap Heart Message */
+    .click-heart {
+      position: absolute;
+      color: #ffc0cb;
+      font-weight: bold;
+      animation: floatUp 3s ease-in-out forwards;
+      pointer-events: none;
+      font-size: 0.9rem;
+    }
+
+    /* 🌠 Shooting Star */
+    .shooting-star {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 80px;
+      height: 2px;
+      background: white;
+      box-shadow: 0 0 10px #fff, 0 0 20px #ffb3ec;
+      opacity: 0;
+      transform: rotate(45deg);
+      animation: shoot 3s ease-in-out;
+      z-index: 999;
+    }
+
+    @keyframes shoot {
+      0% { top: -10px; left: -50px; opacity: 0; }
+      10% { opacity: 1; }
+      100% { top: 100vh; left: 100vw; opacity: 0; }
+    }
+
+    /* ✨ Starfield Background */
+    .stars::before {
+      content: '';
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      box-shadow: 
+        10px 20px #fff, 50px 80px #fff, 130px 100px #fff, 
+        170px 200px #fff, 250px 150px #fff, 300px 300px #fff, 
+        500px 400px #fff, 600px 200px #fff, 700px 100px #fff, 
+        800px 250px #fff, 900px 300px #fff, 1000px 400px #fff;
+      z-index: 0;
+      animation: twinkle 4s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      .moon { width: 60px; height: 60px; top: 15px; right: 15px; }
+      .btn { width: 100%; font-size: 1rem; }
+      .message-box { padding: 20px 15px; }
+      .click-heart { font-size: 0.8rem; }
+    }
+
+    /* 💌 Love Notes Message Box */
+    .message-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 25px 20px;
+      margin-top: 25px;
+      max-width: 100%;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.2);
+      color: #ffdff5;
+      font-size: 1.3rem;
+    }
+
+    .love-note {
+      display: none;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px;
+      font-size: 1.2rem;
+      color: #ff85c1;
+    }
+  </style>
+</head>
+<body class="stars" onclick="popHeart(event)">
+
+  <h1>
+    <div class="moon"></div>
+    Hey Beautiful ✨
+  </h1>
+  <p>I know you're sad... and I'm really sorry.</p>
+  <p>But you light up my night sky, and I made this just for you...</p>
+
+  <div class="heart my-4">💖</div>
+
+  <button class="btn" onclick="showSurprise()">Click for a Surprise 🌟</button>
+  <br>
+
+  <div id="surprise">
+    You're the brightest star in my sky 💫
+    <div class="message-box">
+        <h3>My Sweetest Love,</h3>
+        <p style="white-space: pre-line;">
+          I know I’ve made mistakes, and I never want to be the reason you're hurt. 
+          Your smile is the highlight of my day, and your presence fills my world with joy. 
+    
+          Every moment away from you feels empty — and I want to fill our days again with laughter, love, and unforgettable memories.
+    
+          I'm not perfect, but I’m yours. And every beat of my heart is a promise to try harder, love deeper, and never stop choosing you.
+    
+          You’re more than my girlfriend — you’re my peace, my best friend, my home.
+    
+          Let’s wish on this night sky — for healing, for joy, for forever. 💫
+        </p>
+      </div>
+
+    </div>
+
+  
+
+  <!-- Love Notes / Hidden Messages -->
+  <div class="floating-heart" onmouseover="showLoveNote('You’re perfect 💕')" onmouseout="hideLoveNote()">💖</div>
+  <div class="floating-heart" onmouseover="showLoveNote('I miss you 🥺')" onmouseout="hideLoveNote()">💖</div>
+  <div class="floating-heart" onmouseover="showLoveNote('Forever yours 💍')" onmouseout="hideLoveNote()">💖</div>
+  <div id="love-note" class="love-note"></div>
+<br>
+  <!-- Virtual Hug -->
+  <button class="btn btn-lg btn-danger" onclick="showHug()">Hug Me 🤗</button>
+<br>
+<br>
+  <div class="hug-animate" style="display:none;">
+    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGhkc2RqbnV1d2t2ZGN6YWU2Z2hjNm92bzBlb2cybXp5b3dpMmpzNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KG5oq4vesf9r8JbBEN/giphy.gif" alt="Virtual Hug" width="300px" />
+    <p style="color: #ff85c1; font-size: 1.5rem; margin-top: 10px;">I'm sending you a big virtual hug 💖</p>
+  </div>
+
+  <script>
+    function showSurprise() {
+      document.getElementById("surprise").style.display = "block";
+    }
+
+    // Floating Hearts
+    function createFloatingHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.top = window.innerHeight - 50 + "px";
+      heart.style.fontSize = (16 + Math.random() * 16) + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+    setInterval(createFloatingHeart, 600);
+
+    // Shooting Star
+    function createShootingStar() {
+      const star = document.createElement("div");
+      star.classList.add("shooting-star");
+      document.body.appendChild(star);
+      setTimeout(() => star.remove(), 3000);
+    }
+    setInterval(createShootingStar, 8000);
+
+    // Click-to-pop hearts
+    const loveMessages = [
+      "You're perfect 💕",
+      "I miss you 🥺",
+      "You light up my world ✨",
+      "Forever yours 💍",
+      "Your smile heals me 🌞",
+      "I'm sorry, my love ❤️",
+      "You're my wish come true 🌠"
+    ];
+
+    function popHeart(e) {
+      const heartMsg = document.createElement("div");
+      heartMsg.className = "click-heart";
+      heartMsg.innerText = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+      heartMsg.style.left = e.clientX + "px";
+      heartMsg.style.top = e.clientY + "px";
+      document.body.appendChild(heartMsg);
+      setTimeout(() => heartMsg.remove(), 3000);
+    }
+
+    // Love Notes / Hidden Messages
+    function showLoveNote(message) {
+      const loveNote = document.getElementById('love-note');
+      loveNote.innerText = message;
+      loveNote.style.display = 'block';
+    }
+
+    function hideLoveNote() {
+      const loveNote = document.getElementById('love-note');
+      loveNote.style.display = 'none';
+    }
+
+    // Virtual Hug
+    function showHug() {
+      const hug = document.querySelector('.hug-animate');
+      hug.style.display = 'block';
+      setTimeout(() => {
+        hug.style.display = 'none';
+      }, 5000); // Hide the hug after 5 seconds
+    }
+  </script>
+
+</body>
+</html>
